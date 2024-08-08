@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Mejorada de Oxígeno Disuelto en Agua</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Calculadora de Oxígeno Disuelto en Agua</h1>
+        <button id="menuButton" onclick="toggleInfoWindow()">&#9776;</button> <!-- Símbolo de tres rayas -->
+    </header>
+    <main>
+        <h2>Instrucciones de Uso</h2>
+        <div id="instructions">
+            <p>1. Introduce la temperatura del agua en grados Celsius.</p>
+            <p>2. Introduce la salinidad del agua en partes por mil (ppt).</p>
+            <p>3. Introduce la presión atmosférica en milímetros de mercurio (mmHg).</p>
+            <p>4. Haz clic en el botón "Calcular Oxígeno Disuelto" para obtener el resultado.</p>
+            <p>5. Puedes mostrar u ocultar información sobre los porcentajes de saturación y los rangos de oxígeno disuelto usando los botones correspondientes.</p>
+        </div>
+
+        <label for="temperature">Temperatura (°C):</label>
+        <input type="number" id="temperature" required>
+        
+        <label for="salinity">Salinidad (ppt):</label>
+        <input type="number" id="salinity" required>
+        
+        <label for="pressure">Presión Atmosférica (mmHg):</label>
+        <input type="number" id="pressure" required>
+        
+        <button onclick="calculateOxygen()">Calcular Oxígeno Disuelto</button>
+        
+        <div id="result"></div>
+
+        <button onclick="toggleInfo()">Mostrar/Ocultar Información de Saturación</button>
+        <div id="info" style="display:none;">
+            <div class="info-item"><strong>0-60%:</strong> Muy bajo. Puede indicar condiciones de estrés para la vida acuática.</div>
+            <div class="info-item"><strong>60-80%:</strong> Bajo. Puede ser adecuado para algunas especies, pero no para todas.</div>
+            <div class="info-item"><strong>80-100%:</strong> Adecuado. Condiciones óptimas para la mayoría de las especies acuáticas.</div>
+            <div class="info-item"><strong>100-120%:</strong> Alto. Puede indicar sobre saturación, lo que puede ser dañino.</div>
+            <div class="info-item"><strong>120% o más:</strong> Muy alto. Peligroso para la vida acuática; puede causar burbujas de gas.</div>
+        </div>
+
+        <button onclick="toggleDoRanges()">Mostrar/Ocultar Rangos de Oxígeno Disuelto</button>
+        <div id="doRanges" style="display:none;">
+            <div class="do-range-item"><strong>0-2 mg/L:</strong> Crítico. No apto para la mayoría de las especies.</div>
+            <div class="do-range-item"><strong>2-4 mg/L:</strong> Muy bajo. Peligroso para la vida acuática.</div>
+            <div class="do-range-item"><strong>4-6 mg/L:</strong> Bajo. Puede afectar la salud de las especies sensibles.</div>
+            <div class="do-range-item"><strong>6-8 mg/L:</strong> Moderado. Aceptable para muchas especies, pero no óptimo.</div>
+            <div class="do-range-item"><strong>8-10 mg/L:</strong> Bueno. Condiciones favorables para la mayoría de las especies.</div>
+            <div class="do-range-item"><strong>10-12 mg/L:</strong> Excelente. Ideal para la vida acuática saludable.</div>
+            <div class="do-range-item"><strong>12 mg/L o más:</strong> Muy alto. Puede causar problemas de sobre saturación.</div>
+        </div>
+
+        <div id="salinitySection">
+            <button onclick="toggleSalinityRanges()">Mostrar/Ocultar Rangos de Salinidad</button>
+            <div id="salinityRanges" style="display:none;">
+                <div class="salinity-item"><strong>Agua Dulce:</strong> 0-0.5 ppt (partes por mil). Ideal para la mayoría de los ecosistemas de agua dulce.</div>
+                <div class="salinity-item"><strong>Agua Salada:</strong> 30-35 ppt. Condiciones óptimas para la mayoría de los ecosistemas marinos.</div>
+                <div class="salinity-item"><strong>Salinidad Alta:</strong> 35 ppt o más. Puede ser estresante para muchas especies de agua dulce.</div>
+            </div>
+        </div>
+
+        <div id="infoWindow" style="display:none;">
+            <h2>Información Importante</h2>
+            <p><strong>¿Qué es el oxígeno disuelto?</strong> Es el oxígeno que se encuentra en el agua y es esencial para la vida acuática.</p>
+            <p><strong>Importancia del oxígeno disuelto:</strong> Es vital para la respiración de peces y otros organismos acuáticos.</p>
+            <p><strong>¿Qué es la salinidad?</strong> Es la concentración de sales en el agua, que afecta la densidad y la capacidad del agua para retener oxígeno.</p>
+            <p><strong>Importancia de la salinidad:</strong> La salinidad influye en la salud de los ecosistemas acuáticos y en las mediciones de oxígeno disuelto.</p>
+            <p><strong>Temperatura:</strong> Afecta la solubilidad del oxígeno; el agua más caliente retiene menos oxígeno.</p>
+            <p><strong>Presión atmosférica:</strong> A mayor presión, mayor disolución de oxígeno en el agua.</p>
+            <button onclick="toggleInfoWindow()">Cerrar</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
